@@ -1,0 +1,16 @@
+# Compiled executables
+agent_454
+controller_454
+
+# Test files
+test.txt
+downloaded.txt
+
+# Runtime files
+*.log
+
+# Agent uploaded files
+agentfiles/
+
+# Temporary/editor files
+*~
