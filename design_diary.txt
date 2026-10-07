@@ -1,0 +1,14 @@
+IE3090 RemoteOps – Design Diary
+Registration Number: IT24100454
+
+The RemoteOps project was developed as a TCP client-server system consisting of an Agent and a Controller. The Agent acts as the server and listens on the personalized TCP port 9410, while the Controller is used to connect to the Agent and perform the required operations. The personalized values were calculated from the registration number, including SID 4540 and authentication token OPS-0454.
+
+For concurrency, a thread-per-client approach was selected. When the Agent accepts a new Controller connection, a separate POSIX thread is created to handle that client. This allows multiple Controllers to communicate with the same Agent at the same time. The implementation was tested with five simultaneous Controller connections.
+
+Authentication was implemented before allowing access to the other commands. The Agent checks the personalized authentication token and includes the SID in its responses. The main operations implemented were SYSINFO, LISTPROC, the restricted EXEC commands, PUT, GET, MONITOR START, MONITOR STOP and QUIT. File transfers use the personalized storage directory, while UDP monitoring runs separately so that system information can be sent periodically without blocking the main TCP connection.
+
+During development, several issues had to be resolved. An existing Agent process caused the TCP port to report "Address already in use", which was resolved by identifying and stopping the old process. GitHub authentication also initially failed because password authentication was not accepted for Git operations. GitHub CLI authentication was then configured and the repository was successfully pushed. Another issue was that the personalized Makefile existed but was empty, so build and clean targets were added and tested.
+
+Testing was performed progressively rather than only at the end. Authentication failures, commands before authentication, invalid EXEC commands and missing files were tested. PUT and GET were tested by checking the transferred file and the Agent storage directory. Both graceful and ungraceful client disconnections were tested. TCP framing was also tested by sending multiple commands together and by splitting one command across separate TCP transmissions. Timestamped logging was added to record connections, commands and file transfers.
+
+The final implementation was checked using the personalized configuration, logging, file storage, concurrent connections and UDP monitoring. The testing helped confirm that the system works as a complete Agent and Controller application rather than only as individual command handlers.

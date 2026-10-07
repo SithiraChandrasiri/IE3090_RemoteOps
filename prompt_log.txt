@@ -1,0 +1,99 @@
+IE3090 RemoteOps – AI Prompt Log
+Registration Number: IT24100454
+
+AI Tool Used:
+ChatGPT
+
+1. Initial implementation and protocol guidance
+Purpose:
+Used ChatGPT to understand the RemoteOps assignment requirements and plan the Agent and Controller implementation.
+
+How it was used:
+ChatGPT helped break the assignment into TCP communication, authentication, command handling, file transfer, UDP monitoring, logging and concurrency. The implementation was then tested locally against the assignment requirements.
+
+2. C socket programming and debugging
+Purpose:
+Used ChatGPT to explain C socket programming concepts, TCP client/server communication, pthread usage and handling client connections.
+
+How it was used:
+The explanations were used while developing and understanding the Agent and Controller code. The resulting code was compiled and tested locally rather than being accepted without verification.
+
+3. Authentication and personalized configuration
+Purpose:
+Used ChatGPT to calculate and check the personalized values required from registration number IT24100454.
+
+Values used:
+Port: 9410
+SID: 4540
+Authentication token: OPS-0454
+Log file: remoteops_IT24100454.log
+Storage path: ./agentfiles/IT24100454/
+
+How it was used:
+These values were checked against the assignment formulas and then included in the C implementation and tested through actual Controller-Agent communication.
+
+4. UDP monitoring implementation
+Purpose:
+Used ChatGPT to understand how to add the secondary UDP monitoring channel while keeping the TCP connection active.
+
+How it was used:
+The Agent was modified to start a separate monitoring thread when MONITOR START was received and stop it using MONITOR STOP. The feature was then tested by observing repeated SYSINFO UDP messages at the Controller.
+
+5. Error handling and testing
+Purpose:
+Used ChatGPT to identify useful error and edge-case tests.
+
+Tests performed:
+- Incorrect authentication token
+- Commands before authentication
+- Invalid EXEC command
+- Missing GET file
+- MONITOR STOP when monitoring was not active
+- Graceful QUIT
+- Ungraceful client disconnect
+- Multiple simultaneous Controllers
+
+How it was used:
+The suggested tests were executed manually and the observed results were used as evidence for the implementation.
+
+6. TCP framing testing
+Purpose:
+Used ChatGPT to test whether the implementation correctly handles TCP data arriving in different ways.
+
+Tests performed:
+- Multiple newline-terminated commands sent in one TCP transmission
+- One AUTH command split across two TCP transmissions
+
+How it was used:
+Python socket commands were used to generate the test cases. The Agent correctly processed both cases.
+
+7. Logging implementation
+Purpose:
+Used ChatGPT to add timestamped activity logging to the Agent.
+
+How it was used:
+Logging was added for connections, authentication, commands, file transfers, monitoring and disconnects. The resulting remoteops_IT24100454.log file was checked manually and contained timestamped entries.
+
+8. Makefile and build troubleshooting
+Purpose:
+Used ChatGPT to troubleshoot the personalized Makefile and compiler warnings.
+
+How it was used:
+The empty Makefile_454 was identified and build/clean targets were added. The Makefile was then tested using make -f Makefile_454 and make -f Makefile_454 clean. Compiler warnings related to possible command-buffer truncation were also investigated and corrected.
+
+9. GitHub troubleshooting
+Purpose:
+Used ChatGPT to troubleshoot GitHub authentication and repository setup.
+
+How it was used:
+GitHub CLI authentication was used after normal Git password authentication failed. The repository was successfully pushed to GitHub using the main branch.
+
+10. Documentation support
+Purpose:
+Used ChatGPT to help organize the README, design diary, testing evidence and report structure.
+
+How it was used:
+The documentation was based on the actual implementation and tests performed. The final report will use screenshots and results collected from the working system.
+
+Overall evaluation:
+ChatGPT was mainly used for explanations, debugging guidance, testing ideas and documentation support. The generated suggestions were checked by compiling the programs, running the Agent and Controller, performing network tests and verifying the resulting files and logs. Changes were made when the suggested approach did not match the actual project structure or required testing.

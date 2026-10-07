@@ -1272,7 +1272,7 @@ int main(int argc,
 
         snprintf(command,
                  sizeof(command),
-                 "%s\n",
+                 "%.1022s\n",
                  line);
 
 

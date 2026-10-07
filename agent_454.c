@@ -1520,7 +1520,7 @@ void *handle_client(void *arg)
 
         snprintf(log_message,
                  sizeof(log_message),
-                 "COMMAND %s",
+                 "COMMAND %.500s",
                  line);
 
 

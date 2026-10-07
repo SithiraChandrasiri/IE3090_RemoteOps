@@ -1,0 +1,18 @@
+IE3090 RemoteOps – Reflection
+Registration Number: IT24100454
+
+1. Which AI tools did you use and at which stages?
+
+I used ChatGPT during the Part 1 development of the RemoteOps system. I mainly used it while planning the TCP Agent and Controller structure, understanding C socket programming, implementing authentication, file transfer and UDP monitoring, and troubleshooting compiler and runtime errors. I also used it during testing to identify useful error cases and TCP framing tests. Towards the end, I used it to help organize the README, design diary, prompt log and Implementation Report.
+
+2. What did the AI do well, and where did it get things wrong or mislead you?
+
+ChatGPT was useful for breaking a large networking assignment into smaller tasks and explaining concepts such as TCP connections, pthreads, UDP monitoring and file transfers in simpler terms. It was also useful when troubleshooting specific errors because it provided step-by-step commands that could be tested immediately. However, some suggestions did not match the actual state of my project. For example, the Makefile existed but was empty, so the normal make command initially failed. Some code replacement suggestions also did not work on the first attempt because the exact formatting of my source code was different. This showed me that AI suggestions cannot simply be copied without checking the actual files and output.
+
+3. What did you change, add or reject from AI output, and why?
+
+I tested the suggested changes by compiling and running the programs instead of assuming they were correct. I modified the Agent and Controller when necessary to match my actual implementation and the assignment protocol. I also tested authentication, file transfers, UDP monitoring, error handling, TCP framing and logging manually. When compiler warnings appeared, I investigated them and changed the affected code rather than ignoring them. The final implementation was therefore based on tested changes rather than accepting every AI suggestion directly.
+
+4. What did you learn about your own understanding of network programming?
+
+This project improved my understanding of how TCP client-server communication actually works. I learned that TCP is a byte stream and that one send does not necessarily correspond to one receive, which became clearer when testing partial commands and multiple commands sent together. I also learned how threads can be used to serve multiple clients and how UDP can provide a separate monitoring channel. File transfer helped me understand the importance of tracking exact byte counts. Most importantly, testing the system helped me understand the difference between writing code that compiles and building a network application that behaves correctly under different conditions.
